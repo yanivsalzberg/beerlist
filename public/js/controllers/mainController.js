@@ -1,15 +1,16 @@
- app.controller('BeerController', function($scope){
+ app.controller('BeerController', function($scope, beerStorageInfo){
+  
   $scope.beers = [];
-
   $scope.addBeer = function() {
     console.log("button works");
     var beer = {
       name: $scope.name,
       style: $scope.style,
       abv: $scope.abv,
-      image: $scope.image 
+      image: $scope.image
     };
     $scope.beers.push(beer);
+
     console.log($scope.beers);
 
     $scope.name = "";
