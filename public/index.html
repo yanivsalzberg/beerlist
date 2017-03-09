@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <script src="angular/angular.js"></script>
+</head>
+
+<body background=http://www.thegoodshoppingguide.com/wp-content/uploads/2013/03/beer.jpg ng-app="beerList" class="ng-cloak">
+    <div class="container ng-cloak" ng-controller="BeerController">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1 class="text-center"> <i class="fa fa-beer" aria-hidden="true"></i> Beer List </h1>
+                <div class="page-header">
+                </div>
+                <!-- render beers here -->
+                <form ng-submit="addBeer()">
+                    <h3 class="text-center">Add a new beer</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Beer Name" ng-model="name"></input>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Style" ng-model="style"></input>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="ABV" ng-model="abv"></input>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Image URL" ng-model="image"></input>
+                    </div>
+                    <button type="button" class="btn btn-primary" ng-click="addBeer()">Add</button>
+                </form>
+
+                <div ng-if="!beers.length">
+                  <h2 class="text-center">
+                    <i class="fa fa-plus" aria-hidden="true"></i> need beers
+                  </h2>
+                </div>
+
+                <ul class="ng-cloak">
+                    <li ng-repeat="beer in beers" >
+                        <button class="btn btn-danger" ng-click="removeBeer($index)" > <i class="fa fa-trash-o fa-lg"></i> delete</button>
+                        The beer is {{beer.name}}
+                        <img src="{{beer.image}}".>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/services/beers.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+</body>
+
+</html>
